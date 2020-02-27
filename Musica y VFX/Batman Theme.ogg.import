@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Batman Theme.ogg-4533bd6baefdd2a7ed4da6fc3bcd63d4.oggstr"
+
+[deps]
+
+source_file="res://Musica y VFX/Batman Theme.ogg"
+dest_files=[ "res://.import/Batman Theme.ogg-4533bd6baefdd2a7ed4da6fc3bcd63d4.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
