@@ -325,22 +325,23 @@ public class serpiente : Spatial
     private void Explotar(Array<RigidBody> CuerposRigidos)//obtengo lo cuerpos rigidos
     {
         //para recorrer el arreglo de colecciones Godot
-        //uso un foreach pero como tipo dato usamos "var"
-        foreach (var i in CuerposRigidos) 
+        
+        foreach (RigidBody i in CuerposRigidos) 
         {
             (i as RigidBody).Sleeping = false;//tiene efectos de gravedad
             
             (i as RigidBody).ApplyCentralImpulse(new Vector3(
                 (float)Godot.GD.RandRange(-FuerzaExplocion,FuerzaExplocion),//aplica un impulso aleatorio entre -10 y 10 eje X
                 (float)Godot.GD.RandRange(-FuerzaExplocion,FuerzaExplocion),//aplica un impulso aleatorio entre -2 y 10 eje y
-                0));//*/
+                0));//
             
             //hago que gire aleatoriamente con un impulso
             (i as RigidBody).ApplyTorqueImpulse
             (new Vector3(
                 (float)Godot.GD.RandRange(-2,2),//aplica un impulso aleatorio entre -2 y 2 eje X
                 (float)Godot.GD.RandRange(-2,2),//aplica un impulso aleatorio entre -2 y 2 eje y
-                (float)Godot.GD.RandRange(-2,2)));//*/aplica un impulso aleatorio entre -2 y 2 eje z
+                (float)Godot.GD.RandRange(-2,2))); //aplica un impulso aleatorio entre -2 y 2 eje z
+            
         }
     }
 }
