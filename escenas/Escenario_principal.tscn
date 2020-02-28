@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://escenas/escena_cubo.tscn" type="PackedScene" id=1]
-[ext_resource path="res://codigos/serpiente.cs" type="Script" id=2]
-[ext_resource path="res://escenas/item.tscn" type="PackedScene" id=3]
-[ext_resource path="res://tipografias/Pixeltype.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://tipografias/Pixeltype.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://codigos/serpiente.cs" type="Script" id=3]
+[ext_resource path="res://escenas/item.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Musica y VFX/audioMorir.wav" type="AudioStream" id=5]
 [ext_resource path="res://Musica y VFX/movimiento.ogg" type="AudioStream" id=6]
 [ext_resource path="res://Musica y VFX/tomarItem.wav" type="AudioStream" id=7]
@@ -17,7 +17,7 @@ background_color = Color( 0, 0.623529, 1, 1 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 700
-font_data = ExtResource( 4 )
+font_data = ExtResource( 2 )
 
 [node name="Escenario_principal" type="Spatial"]
 
@@ -34,9 +34,9 @@ transform = Transform( 1, 0, 0, 0, 0.986234, -0.165358, 0, 0.165358, 0.986234, 0
 ]]
 
 [node name="serpiente" type="Spatial" parent="."]
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 Bloque = ExtResource( 1 )
-Item = ExtResource( 3 )
+Item = ExtResource( 4 )
 ancho = 74
 alto = 42
 

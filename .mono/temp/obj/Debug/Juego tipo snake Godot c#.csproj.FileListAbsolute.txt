@@ -1,0 +1,10 @@
+/home/ariel/Documentos/Godot engine proyectos/Juego tipo snake Godot c#/.mono/temp/bin/Debug/Juego tipo snake Godot c#.dll
+/home/ariel/Documentos/Godot engine proyectos/Juego tipo snake Godot c#/.mono/temp/bin/Debug/Juego tipo snake Godot c#.pdb
+/home/ariel/Documentos/Godot engine proyectos/Juego tipo snake Godot c#/.mono/temp/obj/Debug/Juego tipo snake Godot c#.csprojAssemblyReference.cache
+/home/ariel/Documentos/Godot engine proyectos/Juego tipo snake Godot c#/.mono/temp/obj/Debug/Juego tipo snake Godot c#.dll
+/home/ariel/Documentos/Godot engine proyectos/Juego tipo snake Godot c#/.mono/temp/obj/Debug/Juego tipo snake Godot c#.pdb
+/home/ariel/Documentos/Godot engine proyectos/GODOT C# PROYECTOS/Juego tipo snake Godot c#/.mono/temp/bin/Debug/Juego tipo snake Godot c#.dll
+/home/ariel/Documentos/Godot engine proyectos/GODOT C# PROYECTOS/Juego tipo snake Godot c#/.mono/temp/bin/Debug/Juego tipo snake Godot c#.pdb
+/home/ariel/Documentos/Godot engine proyectos/GODOT C# PROYECTOS/Juego tipo snake Godot c#/.mono/temp/obj/Debug/Juego tipo snake Godot c#.csprojAssemblyReference.cache
+/home/ariel/Documentos/Godot engine proyectos/GODOT C# PROYECTOS/Juego tipo snake Godot c#/.mono/temp/obj/Debug/Juego tipo snake Godot c#.dll
+/home/ariel/Documentos/Godot engine proyectos/GODOT C# PROYECTOS/Juego tipo snake Godot c#/.mono/temp/obj/Debug/Juego tipo snake Godot c#.pdb

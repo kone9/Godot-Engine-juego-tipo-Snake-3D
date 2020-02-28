@@ -327,6 +327,11 @@
             <para>Gets the name to display in the import window.</para>
             </summary>
         </member>
+        <member name="T:Godot.EditorInspector">
+            <summary>
+            <para>The editor inspector is by default located on the right-hand side of the editor. It's used to edit the properties of the selected node. For example, you can select a node such as Sprite2D then edit its transform through the inspector tool. The editor inspector is an essential tool in the game development workflow.</para>
+            </summary>
+        </member>
         <member name="T:Godot.EditorInspectorPlugin">
             <summary>
             <para>This plugins allows adding custom property editors to <see cref="T:Godot.EditorInspector"/>.</para>
@@ -841,7 +846,7 @@
         </member>
         <member name="T:Godot.EditorSceneImporterAssimp">
             <summary>
-            <para>This is a multi-format 3D asset importer based on <a href="http://assimp.org/">Assimp</a>. See <a href="https://assimp-docs.readthedocs.io/en/latest/about/intoduction.html#installation">this page</a> for a full list of supported formats.</para>
+            <para>This is an FBX 3D asset importer based on <a href="http://assimp.org/">Assimp</a>. It currently has many known limitations and works best with static meshes. Most animated meshes won't import correctly.</para>
             <para>If exporting a FBX scene from Autodesk Maya, use these FBX export settings:</para>
             <para><code>
             - Smoothing Groups

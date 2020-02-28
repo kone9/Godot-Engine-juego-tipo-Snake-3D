@@ -50,7 +50,7 @@ public class serpiente : Spatial
     //private Godot.Collections.Array<Spatial> cuerpo;//DE esta forma se crea un arreglo de objetos tipo spatial
     //Spatial[] cuerpo;
     private Array<RigidBody> cuerpo = new Array<RigidBody>();
-    
+    private Array<RigidBody> EscenarioAExplocar = new Array <RigidBody>();//en este arreglo voy a guardar el escenario que luego voy a explocar,importarte precargarlo para mejorar el rendimiento en Godot c#
     
     private int indice = 0;//indice para manejar el arreglo
 
@@ -81,6 +81,9 @@ public class serpiente : Spatial
     private AudioStreamPlayer tomarItemAudio;
 
     
+    //optimización del codigo en los objetos
+    
+    
 
 
 
@@ -103,7 +106,7 @@ public class serpiente : Spatial
         Puntuacion = (Label)GetTree().GetNodesInGroup("puntos")[0];//busco el texto y lo inicializo en ready
         mapa = new TipoCasilla[ancho,alto];//inicializamos el array que contiene todas las posiciones con el alto y ancho
         Escenario = (Spatial)GetTree().GetNodesInGroup("Escenario")[0];//precargo el nodo escenario en una variable para tener mejor rendimiento
-        CrearMuros();//llamo a la función para crear los muros
+        CrearMuros();//llamo a la función para crear los muros se precarga al inicio
         posicionInicialX = ancho / 2;//determina el centro del esceneario
         posicionInicialY = alto / 2;//determina el centro del esceneario
         
@@ -123,7 +126,7 @@ public class serpiente : Spatial
 
         Cabeza = NuevoBloque(posicionInicialX,posicionInicialY);//instancio el cubo con la posición al centro y lo guardo en la variable
        
-        InstanciarItemEnPosicionAleatoria();//con esto el item aparece en una posición aletoria en la escena
+        InstanciarItemEnPosicionAleatoria();//con esto el item aparece en una posición aletoria al comienzo de la escena
     }
 
 
@@ -161,6 +164,8 @@ public class serpiente : Spatial
     {
         RigidBody nuevo = (RigidBody)Item.Instance();//instancio un nuevo item
         Escenario.AddChild(nuevo);//lo agrego como hijo de escenario
+        EscenarioAExplocar.Add(nuevo);//el objeto item se llama 1 sola ves por lo tanto si lo guardo en la lista esta bien ya que despues solo se cambia de posición
+
         nuevo.Translation = new Vector3(x,y,0);//la posición la recibo por parametro
         nuevo.RotationDegrees = Godot.Vector3.Zero;//la rotación es igual a cero
         EstablecerMapa(nuevo.Translation,TipoCasilla.Item);//en esta posición hay un ITEM
@@ -213,6 +218,8 @@ public class serpiente : Spatial
                 {
                     Bloque_nuevo = (RigidBody)Bloque.Instance();//instancio la escena pre cargada
                     Escenario.AddChild(Bloque_nuevo);//hago que esta escena sea hija de escenario
+                    EscenarioAExplocar.Add(Bloque_nuevo);//guardo en el arreglo los objetos que van a explotar en este caso el escenario
+                    
                     Vector3 posicion = new Vector3(x,y,0);//posición de cada cubo
                     Bloque_nuevo.Translation = posicion;//posición del cubo
                     Bloque_nuevo.RotationDegrees = Godot.Vector3.Zero;//la rotación es cero
@@ -276,6 +283,8 @@ public class serpiente : Spatial
                 parteCuerpo = NuevoBloque(nuevaPosicion.x,nuevaPosicion.y);//se crea justo donde la serpiente debe de moverse
                 MoverItemAPosicionAleatoria();//creo un nuevo item en una posición aleatoria
                 IncrementarPuntos();//si agarro un item incremento los puntos
+                
+                
             }
             
             //para que se mueva la parte de la cola agregada despues de tomar el ITEM no hay que usar el else
@@ -296,8 +305,11 @@ public class serpiente : Spatial
     {
        //llamo al metodo explotar con un array de rigidbody
        //tengo todos los riggidbody de todas las piezas de la serpiente
-       Explotar(GetChildren());//hago explotar todos los objetos que son hija de serpiente
-       Explotar(Escenario.GetChildren());//hace que explote todos los objetos que son hijos del nodo escenario incluyendo el item
+       //voy a optimizar el codigo aqui ya que si llamo a los nodos children
+       //sin precargarlos pierde mucho rendimiento
+       Explotar(cuerpo);//hago explotar todos los objetos que son hija de serpiente
+       Explotar(EscenarioAExplocar);//hace que explote todos los objetos que forman parte de escenario
+       
        mundo.Environment.BackgroundColor = Godot.Colors.Red;//cambio el color del mundo a rojo usando los colores pre establecidos de Godot 
        Puntuacion.Set("custom_colors/font_color",new Color(1,1,1,0.8f));//accedo al parametro custom color y lo hago más visible
        GD.Print("perdiste");//muestro por consola un mensaje diciendo que perdiste
@@ -308,9 +320,9 @@ public class serpiente : Spatial
 
                 
     
-       
+    
 
-    private void Explotar(Godot.Collections.Array CuerposRigidos)//obtengo lo cuerpos rigidos
+    private void Explotar(Array<RigidBody> CuerposRigidos)//obtengo lo cuerpos rigidos
     {
         //para recorrer el arreglo de colecciones Godot
         //uso un foreach pero como tipo dato usamos "var"
@@ -326,9 +338,9 @@ public class serpiente : Spatial
             //hago que gire aleatoriamente con un impulso
             (i as RigidBody).ApplyTorqueImpulse
             (new Vector3(
-                (float)Godot.GD.RandRange(-2,2),//aplica un impulso aleatorio entre -10 y 10 eje X
-                (float)Godot.GD.RandRange(-2,2),//aplica un impulso aleatorio entre -2 y 10 eje y
-                0));//*/
+                (float)Godot.GD.RandRange(-2,2),//aplica un impulso aleatorio entre -2 y 2 eje X
+                (float)Godot.GD.RandRange(-2,2),//aplica un impulso aleatorio entre -2 y 2 eje y
+                (float)Godot.GD.RandRange(-2,2)));//*/aplica un impulso aleatorio entre -2 y 2 eje z
         }
     }
 }
