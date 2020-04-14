@@ -17,7 +17,7 @@ _global_script_class_icons={
 
 config/name="Juego tipo snake Godot c#"
 run/main_scene="res://escenas/Inicio.tscn"
-config/icon="res://icon.png"
+config/icon="res://logo.png"
 
 [autoload]
 

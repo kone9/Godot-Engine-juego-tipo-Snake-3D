@@ -196,6 +196,7 @@ public class serpiente : Spatial
     {
         Horizontal = Input.GetActionStrength("d") - Input.GetActionStrength("a");//si se mueve izquierda o derecha
         Vertical = Input.GetActionStrength("w") - Input.GetActionStrength("s");//si muevo arriba o abajo
+        
         DireccionSeleccionada = new Vector3(Horizontal,Vertical,0);//vector para mover 
         if (DireccionSeleccionada != Godot.Vector3.Zero)//si la dirección es distinta de cero
         {
