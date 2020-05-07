@@ -1,5 +1,5 @@
 # Godot-Engine-juego-tipo-Snake-3D
-Godot Engine c# juego tipo Snake 3D (Recreando un tutorial de unity en Godot C#)
+Godot Engine c# juego tipo Snake 3D (Recreando un tutorial de unity en Godot C#) versión 3.2 stable
 
 Prueba el juego en itchio:
 https://kone9.itch.io/godot-engine-c-juego-tipo-snake-3d
